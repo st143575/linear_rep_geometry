@@ -1,3 +1,4 @@
+import os
 import torch
 import numpy as np
 import transformers
@@ -72,6 +73,7 @@ for filename in filenames:
     count += 1
 
 ### save everything ###
+os.makedirs("matrices", exist_ok=True)
 torch.save(gamma, "matrices/gamma.pt")
 torch.save(g, "matrices/g.pt")
 torch.save(sqrt_Cov_gamma, "matrices/sqrt_Cov_gamma.pt")

@@ -1,4 +1,4 @@
-import transformers
+from transformers import LlamaTokenizer, LlamaForCausalLM
 import torch
 import numpy as np
 import seaborn as sns
@@ -18,10 +18,10 @@ sns.set_theme(
     font_scale=1.75,  # 1.75, 2, ...
 )
 
-# MODEL_PATH = ### Path where the weights for LLaMA-2-7B are stored ###
-tokenizer = transformers.LlamaTokenizer.from_pretrained(MODEL_PATH)
-model = transformers.LlamaForCausalLM.from_pretrained(MODEL_PATH, low_cpu_mem_usage=True, device_map="auto")
-
+MODEL_PATH = "meta-llama/Llama-2-7b-hf"
+CACHE_DIR = "/mount/studenten/arbeitsdaten-studenten1/shencg/linear_rep_geometry/cache"
+tokenizer = LlamaTokenizer.from_pretrained(MODEL_PATH, cache_dir=CACHE_DIR)
+model = LlamaForCausalLM.from_pretrained(MODEL_PATH, cache_dir=CACHE_DIR, device_map="auto")
 
 
 ## get indices of counterfactual pairs
